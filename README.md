@@ -1,2 +1,7 @@
 # An-Analysis-of-Airbnb-Distribution-and-Transport-Infrastructure-in-London
-Spatial analysis of London's Airbnb market using Python, Folium, and the TfL API — exploring how transit accessibility drives short-term rental density across London boroughs.
+This project investigates the spatial distribution of Airbnb listings across London boroughs, examining how proximity to Transport for London (TfL) Underground stations correlates with short-term rental density. The core argument is simple but revealing: accessibility is the primary currency of the short-term rental economy, and London's Airbnb market is, in many ways, a shadow of its transit network.
+
+The analysis progresses from static charts and choropleth maps to a fully interactive, API-driven map built with Folium. Layers include Airbnb listing density by borough, the River Thames as a geographic reference, and clustered markers for every TfL tube station — all toggleable in a single interactive interface. Data was sourced from Inside Airbnb and the official TfL Unified API.
+
+Beyond the visualisations, the project engages with broader urban geography literature, drawing on research around tourism gentrification, the rent gap, and the housing implications of platform-based short-term rentals. The conclusion argues that while early maps show where listings concentrate, the final interactive tool begins to explain why, connecting infrastructure, tourism, and neighbourhood change in a single spatial lens.
+Built as a Jupyter Notebook and exported to HTML for easy sharing, the project demonstrates the full pipeline from raw data ingestion and API calls through to publication-ready geospatial storytelling.
