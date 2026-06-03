@@ -196,7 +196,7 @@ for idx, row in stations_london.iterrows():
         location=[row.geometry.y, row.geometry.x],
         radius=8,
         color='white',
-        weight=3,
+        weight=2,
         fill=True,
         fill_color='#0019a8',
         fill_opacity=1,
