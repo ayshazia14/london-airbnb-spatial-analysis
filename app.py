@@ -194,7 +194,7 @@ tube_layer = folium.FeatureGroup(name='TfL Tube Stations').add_to(m)
 for idx, row in stations_london.iterrows():
     folium.CircleMarker(
         location=[row.geometry.y, row.geometry.x],
-        radius=8,
+        radius=7,
         color='white',
         weight=2,
         fill=True,
