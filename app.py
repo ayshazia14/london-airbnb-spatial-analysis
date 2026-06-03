@@ -177,16 +177,19 @@ folium.GeoJson(
     style_function=lambda x: {'color': 'lightblue', 'weight': 4, 'opacity': 0.9}
 ).add_to(m)
 
+# borough name labels
 for idx, row in boroughs_map.iterrows():
     point = row.geometry.representative_point()
     folium.Marker(
         location=[point.y, point.x],
-        popup=row['NAME'],
         icon=folium.DivIcon(
-            html=f"<div style='font-size:12px; font-weight:bold; color:black;'>{row['NAME']}</div>"
+            html=f"<div style='font-size:12px; font-weight:bold; color:black; text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;'>{row['NAME']}</div>",
+            icon_size=(150, 20),
+            icon_anchor=(75, 10)
         )
     ).add_to(m)
 
+# tube stations 
 marker_cluster = MarkerCluster(name='TfL Tube Stations').add_to(m)
 for idx, row in stations_london.iterrows():
     folium.CircleMarker(
