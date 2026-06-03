@@ -148,7 +148,8 @@ st.markdown('<hr>', unsafe_allow_html=True)
 
 #  Map
 st.markdown('<div class="section-label">Interactive Map — toggle layers using the control (top right)</div>', unsafe_allow_html=True)
-m = folium.Map(location=[51.5074, -0.1278], zoom_start=9, tiles='OpenStreetMap')
+
+m = folium.Map(location=[51.5074, -0.1278], zoom_start=10, tiles='OpenStreetMap')
 
 choropleth = folium.Choropleth(
     geo_data=boroughs_map,
@@ -176,6 +177,16 @@ folium.GeoJson(
     style_function=lambda x: {'color': 'lightblue', 'weight': 4, 'opacity': 0.9}
 ).add_to(m)
 
+for idx, row in boroughs_map.iterrows():
+    point = row.geometry.representative_point()
+    folium.Marker(
+        location=[point.y, point.x],
+        popup=row['NAME'],
+        icon=folium.DivIcon(
+            html=f"<div style='font-size:12px; font-weight:bold; color:black;'>{row['NAME']}</div>"
+        )
+    ).add_to(m)
+
 marker_cluster = MarkerCluster(name='TfL Tube Stations').add_to(m)
 for idx, row in stations_london.iterrows():
     folium.Marker(
@@ -185,9 +196,9 @@ for idx, row in stations_london.iterrows():
 
 folium.LayerControl(collapsed=False).add_to(m)
 
-st_folium(m, width='100%', height=580, returned_objects=[])
+st_folium(m, width='100%', height=680, returned_objects=[])
 
-# ── Footer ────────────────────────────────────────────────────────────────────
+# Footer
 st.markdown('<hr>', unsafe_allow_html=True)
 st.markdown("""
 <div style="font-size:0.78rem; color:#aaa; line-height:1.8;">
