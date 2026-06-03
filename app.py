@@ -190,21 +190,20 @@ for idx, row in boroughs_map.iterrows():
     ).add_to(m)
 
 # tube stations 
-marker_cluster = MarkerCluster(name='TfL Tube Stations').add_to(m)
+tube_layer = folium.FeatureGroup(name='TfL Tube Stations').add_to(m)
 for idx, row in stations_london.iterrows():
     folium.CircleMarker(
         location=[row.geometry.y, row.geometry.x],
-        radius=6,
+        radius=8,
         color='white',
-        weight=1.5,
+        weight=3,
         fill=True,
         fill_color='#0019a8',
-        fill_opacity=0.9,
+        fill_opacity=1,
         popup=row['name']
-    ).add_to(marker_cluster)
+    ).add_to(tube_layer)
 
 folium.LayerControl(collapsed=False).add_to(m)
-
 st_folium(m, width='100%', height=680, returned_objects=[])
 
 # Footer
