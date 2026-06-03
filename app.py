@@ -13,7 +13,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# ── Styling ───────────────────────────────────────────────────────────────────
+# Styling 
 st.markdown("""
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap');
@@ -72,11 +72,11 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# ── Header ────────────────────────────────────────────────────────────────────
+# Header 
 st.markdown('<div class="title">Airbnb Distribution &<br>Transit Infrastructure</div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">Greater London · Entire-home listings vs. TfL Underground network</div>', unsafe_allow_html=True)
 
-# ── Data loading ──────────────────────────────────────────────────────────────
+# data 
 BOROUGH_PATH = 'statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp'
 
 @st.cache_data
@@ -113,7 +113,7 @@ with st.spinner('Loading data…'):
     df_stations = fetch_tube_stations()
     river = load_river()
 
-# ── Compute counts ────────────────────────────────────────────────────────────
+# Compute counts
 gdf_points = gpd.GeoDataFrame(
     entire_homes,
     geometry=gpd.points_from_xy(entire_homes.longitude, entire_homes.latitude),
@@ -131,7 +131,7 @@ stations_gdf = gpd.GeoDataFrame(
 )
 stations_london = gpd.sjoin(stations_gdf, boroughs, predicate='within')
 
-# ── Stats row ─────────────────────────────────────────────────────────────────
+#  Stats row
 col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.markdown(f'<div class="stat-box"><div class="stat-number">{len(entire_homes):,}</div><div class="stat-label">Entire-home listings</div></div>', unsafe_allow_html=True)
@@ -146,10 +146,9 @@ with col4:
 
 st.markdown('<hr>', unsafe_allow_html=True)
 
-# ── Map ───────────────────────────────────────────────────────────────────────
+#  Map
 st.markdown('<div class="section-label">Interactive Map — toggle layers using the control (top right)</div>', unsafe_allow_html=True)
-
-m = folium.Map(location=[51.5074, -0.1278], zoom_start=10, tiles='OpenStreetMap')
+m = folium.Map(location=[51.5074, -0.1278], zoom_start=9, tiles='OpenStreetMap')
 
 choropleth = folium.Choropleth(
     geo_data=boroughs_map,
@@ -176,16 +175,6 @@ folium.GeoJson(
     name='River Thames',
     style_function=lambda x: {'color': 'lightblue', 'weight': 4, 'opacity': 0.9}
 ).add_to(m)
-
-for idx, row in boroughs_map.iterrows():
-    point = row.geometry.representative_point()
-    folium.Marker(
-        location=[point.y, point.x],
-        popup=row['NAME'],
-        icon=folium.DivIcon(
-            html=f"<div style='font-size:12px; font-weight:bold;'>{row['NAME']}</div>"
-        )
-    ).add_to(m)
 
 marker_cluster = MarkerCluster(name='TfL Tube Stations').add_to(m)
 for idx, row in stations_london.iterrows():
