@@ -189,8 +189,14 @@ for idx, row in boroughs_map.iterrows():
 
 marker_cluster = MarkerCluster(name='TfL Tube Stations').add_to(m)
 for idx, row in stations_london.iterrows():
-    folium.Marker(
+    folium.CircleMarker(
         location=[row.geometry.y, row.geometry.x],
+        radius=6,
+        color='white',
+        weight=1.5,
+        fill=True,
+        fill_color='#0019a8',
+        fill_opacity=0.9,
         popup=row['name']
     ).add_to(marker_cluster)
 
