@@ -1,4 +1,4 @@
-# 📍 London Airbnb Distribution & Transit Density Analytics Engine
+# London Airbnb Distribution & Transit Density Analytics Engine
 
 A geospatial data pipeline and interactive analytics web application examining the relationship between public transit accessibility and short-term rental distribution across all 32 London boroughs. 
 
@@ -14,7 +14,7 @@ This system integrates census boundaries, large-scale accommodation data, and li
 
 ---
 
-## 📊 Data Infrastructure & Lineage
+## Data Infrastructure & Lineage
 
 | Component / Dataset | Source | Technical Format / Protocol |
 |---|---|---|
@@ -61,7 +61,7 @@ This system integrates census boundaries, large-scale accommodation data, and li
 
 This application is deployed on **Streamlit Community Cloud**.
 
-🌐 **[View the Live Dashboard](https://london-airbnb-spatial-analysis.streamlit.app/)**
+**[View the Live Dashboard](https://london-airbnb-spatial-analysis.streamlit.app/)**
 
 ### Run Locally
 
