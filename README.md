@@ -1,16 +1,16 @@
 # 📍 London Airbnb Distribution & Transit Density Analytics Engine
 
-A production-ready geospatial data pipeline and interactive analytics web application examining how public transit accessibility drives short-term rental clustering across all 32 London Boroughs. 
+A geospatial data pipeline and interactive analytics web application examining the relationship between public transit accessibility and short-term rental distribution across all 32 London boroughs. 
 
 This system integrates census boundaries, large-scale accommodation data, and live transit data streams to model how platform-economy housing intersects with critical urban infrastructure.
 
 ---
 
-## 🚀 Core Objectives
+## Core Objectives
 
-- **Spatial Correlation:** Model the relationship between high-density transit hubs and short-term rental supply in Greater London.
+- **Spatial Correlation:** Examine the relationship between transit accessibility and short-term rental supply across London boroughs.
 - **Data Pipeline Engineering:** Construct an end-to-end workflow to ingest, reproject, and clean disparate tabular and geospatial datasets.
-- **Interactive Delivery:** Deploy a live, scalable mapping dashboard utilizing asynchronous API streams and dynamic marker clustering for end-user analysis.
+- **Interactive Delivery:** Build an interactive mapping dashboard integrating TfL transit data, dynamic marker clustering, and layered geospatial visualisations.
 
 ---
 
@@ -24,7 +24,7 @@ This system integrates census boundaries, large-scale accommodation data, and li
 
 ---
 
-## ⚙️ System Architecture & Workflow
+## System Architecture & Workflow
 
 1. **Geospatial Ingestion & ETL:** Load vector boundary shapefiles and reproject geometries to Web Mercator (`EPSG:3857`) for accurate web-mapping alignment.
 2. **Tabular Feature Engineering:** Ingest and isolate massive accommodation records, filtering for specific supply types (`Entire home/apt`).
@@ -38,15 +38,15 @@ This system integrates census boundaries, large-scale accommodation data, and li
 
 ---
 
-## 💡 Key Analytical Insights
+## Key Analytical Insights
 
-- **Infrastructure Clustering:** Short-term accommodations cluster exponentially around Tier-1 transit nodes, heavily concentrated in inner London economic corridors (Westminster, Tower Hamlets, Southwark, Camden).
-- **Predictive Power:** Transit accessibility serves as the primary spatial and economic predictor of rental inventory volume.
-- **Urban Impact:** The direct correlation between public infrastructure and platform supply reflects a profound structural platformisation of urban housing markets, matching frameworks established by Cocola-Gant (2018).
+- **Infrastructure Clustering:** Short-term accommodation listings are concentrated in inner London boroughs, particularly Westminster, Tower Hamlets, Southwark, and Camden, which also contain major public transport hubs.
+- **Predictive Power:** Areas with greater public transit accessibility show higher concentrations of short-term rental listings, indicating a strong spatial association between transport infrastructure and Airbnb supply.
+- **Urban Impact:** The observed concentration of short-term rentals around well-connected areas provides insight into how platform-based accommodation interacts with London's existing transport and housing infrastructure.
 
 ---
 
-## 🛠️ Toolchain & Tech Stack
+## Toolchain & Tech Stack
 
 * **Core Language:** Python
 * **Data Engineering:** `pandas`, `NumPy`
@@ -57,13 +57,16 @@ This system integrates census boundaries, large-scale accommodation data, and li
 
 ---
 
-## 💻 Deployment & Local Execution
+## Deployment & Local Execution
 
-This application is deployed and available via **Streamlit Community Cloud** [Insert your live app URL link here!].
+This application is deployed on **Streamlit Community Cloud**.
 
-To spin up the environment and run the pipelines locally:
+🌐 **[View the Live Dashboard](https://london-airbnb-spatial-analysis.streamlit.app/)**
 
-1. Clone the repository:
+### Run Locally
+
+1. **Clone the repository:**
+
 ```bash
-   git clone [https://github.com/ayshazia14/london-airbnb-spatial-analysis.git](https://github.com/ayshazia14/london-airbnb-spatial-analysis.git)
-   cd london-airbnb-spatial-analysis
+git clone https://github.com/ayshazia14/london-airbnb-spatial-analysis.git
+cd london-airbnb-spatial-analysis
